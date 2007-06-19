@@ -1,16 +1,18 @@
 Summary:	CONE mail reader
 Name:		cone
-Version:	0.69
+Version:	0.70
 Release:	%mkrel 1
 License:	GPL
 Group:		Networking/Mail
 URL:		http://www.courier-mta.org/cone
 Source0:	http://prdownloads.sourceforge.net/courier/%{name}-%{version}.tar.bz2
+Source1:	http://prdownloads.sourceforge.net/courier/%{name}-%{version}.tar.bz2.sig
 BuildPreReq:	aspell-devel
 BuildPreReq:	autoconf2.5
 BuildPreReq:	fam-devel
 BuildPreReq:	gcc-c++
 BuildPreReq:	ncurses-devel
+BuildPreReq:	libncursesw-devel
 BuildPreReq:	libstdc++-devel
 BuildPreReq:	libtool
 BuildPreReq:	libxml2-devel
