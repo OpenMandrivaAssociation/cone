@@ -1,6 +1,6 @@
 Summary:	CONE mail reader
 Name:		cone
-Version:	0.70
+Version:	0.71
 Release:	%mkrel 1
 License:	GPL
 Group:		Networking/Mail
@@ -95,5 +95,3 @@ install -m644 help.txt %{buildroot}%{_datadir}/cone/
 %{_libdir}/*.la
 %{_mandir}/man[35]/*
 %{_includedir}/libmail
-
-
