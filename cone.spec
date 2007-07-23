@@ -7,18 +7,18 @@ Group:		Networking/Mail
 URL:		http://www.courier-mta.org/cone
 Source0:	http://prdownloads.sourceforge.net/courier/%{name}-%{version}.tar.bz2
 Source1:	http://prdownloads.sourceforge.net/courier/%{name}-%{version}.tar.bz2.sig
-BuildPreReq:	aspell-devel
-BuildPreReq:	autoconf2.5
-BuildPreReq:	fam-devel
-BuildPreReq:	gcc-c++
-BuildPreReq:	ncurses-devel
-BuildPreReq:	libncursesw-devel
-BuildPreReq:	libstdc++-devel
-BuildPreReq:	libtool
-BuildPreReq:	libxml2-devel
-BuildPreReq:	openssl-devel
-BuildPreReq:	perl
-BuildPreReq:	zlib-devel
+BuildRequires:	aspell-devel
+BuildRequires:	autoconf2.5
+BuildRequires:	fam-devel
+BuildRequires:	gcc-c++
+BuildRequires:	ncurses-devel
+BuildRequires:	libncursesw-devel
+BuildRequires:	libstdc++-devel
+BuildRequires:	libtool
+BuildRequires:	libxml2-devel
+BuildRequires:	openssl-devel
+BuildRequires:	perl
+BuildRequires:	zlib-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
