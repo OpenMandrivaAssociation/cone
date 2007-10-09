@@ -26,7 +26,7 @@ CONE is a simple, text-based E-mail reader and writer.
 
 %package	devel
 Group:		Development/C++
-Summary:	LibMAIL mail client development library.
+Summary:	LibMAIL mail client development library
 Requires:	%{name}
 
 %description	devel
