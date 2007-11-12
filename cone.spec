@@ -1,6 +1,6 @@
 Summary:	CONE mail reader
 Name:		cone
-Version:	0.71
+Version:	0.73
 Release:	%mkrel 1
 License:	GPL
 Group:		Networking/Mail
