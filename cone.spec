@@ -1,12 +1,13 @@
 Summary:	CONE mail reader
 Name:		cone
 Version:	0.74
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPL
 Group:		Networking/Mail
 URL:		http://www.courier-mta.org/cone
 Source0:	http://prdownloads.sourceforge.net/courier/%{name}-%{version}.tar.bz2
 Source1:	http://prdownloads.sourceforge.net/courier/%{name}-%{version}.tar.bz2.sig
+Patch0:		cone-gcc43.patch
 BuildRequires:	aspell-devel
 BuildRequires:	autoconf2.5
 BuildRequires:	fam-devel
@@ -37,6 +38,7 @@ library for mail clients.
 %prep
 
 %setup -q
+%patch0 -p1 -b .gcc43
 
 %build
 
