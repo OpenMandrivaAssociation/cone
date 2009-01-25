@@ -1,7 +1,7 @@
 Summary:	CONE mail reader
 Name:		cone
 Version:	0.77
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPL
 Group:		Networking/Mail
 URL:		http://www.courier-mta.org/cone
@@ -56,19 +56,17 @@ library for mail clients.
 %make
 
 %install
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
+rm -rf %{buildroot}
 
 %makeinstall_std
 
-# do not make this spec file as messy as courier-imap...
-rm -f %{buildroot}%{_bindir}/cone
-mv %{buildroot}%{_libdir}/cone %{buildroot}%{_bindir}/
-mv %{buildroot}%{_sysconfdir}/cone.dist %{buildroot}%{_sysconfdir}/cone
+%{__install} sysconftool %{buildroot}%{_datadir}/cone/cone.sysconftool
+touch %{buildroot}%{_sysconfdir}/cone
 
 # do not install the docs twice...
 pushd %{buildroot}%{_datadir}/cone
     for i in *.html; do
-	ln -snf ../doc/%{name}-%{version}/html/$i $i
+	ln -snf ../doc/%{name}/html/$i $i
     done
 popd
 
@@ -76,16 +74,31 @@ popd
 install -m755 libmail/mailtool %{buildroot}%{_bindir}/mailtool
 install -m644 help.txt %{buildroot}%{_datadir}/cone/
 
+%preun
+if [ "$1" = 0 ]; then
+    mv %{_sysconfdir}/cone %{_sysconfdir}/cone.rpmsave
+fi
+
+%pre
+if [ "$1" = 1 -a -f %{_sysconfdir}/cone.rpmsave -a ! -f %{_sysconfdir}/cone ]; then
+    mv %{_sysconfdir}/cone.rpmsave %{_sysconfdir}/cone
+fi
+
+%post
+%{__perl} %{_datadir}/cone/cone.sysconftool %{_sysconfdir}/cone.dist > /dev/null
+
 %clean
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
+rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
 %doc ABOUT-NLS ChangeLog README NEWS AUTHORS COPYING* cone/html
-%attr(0644,root,root) %config(noreplace) %{_sysconfdir}/cone
+%attr(644,root,root) %{_sysconfdir}/cone.dist
+%ghost %attr(0644,root,root) %{_sysconfdir}/cone
 %attr(0755,root,root) %{_bindir}/cone
 %attr(0755,root,root) %{_bindir}/leaf
 %attr(0755,root,root) %{_bindir}/mailtool
+%attr(0755,root,root) %{_libdir}/cone
 %{_datadir}/cone
 %{_mandir}/man1/*
 
