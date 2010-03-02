@@ -1,8 +1,8 @@
 Summary:	CONE mail reader
 Name:		cone
-Version:	0.79
+Version:	0.80
 Release:	%mkrel 1
-License:	GPL
+License:	GPLv2
 Group:		Networking/Mail
 URL:		http://www.courier-mta.org/cone
 Source0:	http://prdownloads.sourceforge.net/courier/%{name}-%{version}.tar.bz2
@@ -35,7 +35,6 @@ developing application using LibMAIL - a high level, C++ OO
 library for mail clients.
 
 %prep
-
 %setup -q
 
 %build
@@ -45,25 +44,14 @@ library for mail clients.
     --enable-static \
     --enable-fast-install \
     --with-devel
-
-# these messes everything up real bad...
-#    --datadir=%{_datadir}/cone \
-#    --with-filterdir=%{_datadir}/cone/filters \
-#    --with-certdb=%{_datadir}/cone/rootcerts \
-#    --libexec=%{_bindir} \
-#    --enable-mimetypes=%{_sysconfdir}/mime.types \
-
 %make
 
 %install
 rm -rf %{buildroot}
-
 %makeinstall_std
-
 %{__install} sysconftool %{buildroot}%{_datadir}/cone/cone.sysconftool
 touch %{buildroot}%{_sysconfdir}/cone
 
-# do not install the docs twice...
 pushd %{buildroot}%{_datadir}/cone
     for i in *.html; do
 	ln -snf ../doc/%{name}/html/$i $i
