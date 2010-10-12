@@ -1,7 +1,7 @@
 Summary:	CONE mail reader
 Name:		cone
-Version:	0.80
-Release:	%mkrel 2
+Version:	0.84
+Release:	%mkrel 1
 License:	GPLv2
 Group:		Networking/Mail
 URL:		http://www.courier-mta.org/cone
