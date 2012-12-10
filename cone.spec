@@ -1,6 +1,6 @@
 Summary:	CONE mail reader
 Name:		cone
-Version:	0.84
+Version:	0.90
 Release:	%mkrel 1
 License:	GPLv2
 Group:		Networking/Mail
@@ -11,15 +11,14 @@ BuildRequires:	aspell-devel
 BuildRequires:	autoconf2.5
 BuildRequires:	fam-devel
 BuildRequires:	gcc-c++
-BuildRequires:	ncurses-devel
-BuildRequires:	libncursesw-devel
+BuildRequires:	pkgconfig(ncurses)
+BuildRequires:	ncursesw-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel
-BuildRequires:	openssl-devel
+BuildRequires:	pkgconfig(libxml-2.0)
+BuildRequires:	pkgconfig(openssl)
 BuildRequires:	perl
-BuildRequires:	zlib-devel
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRequires:	pkgconfig(zlib)
 
 %description
 CONE is a simple, text-based E-mail reader and writer.
@@ -75,11 +74,7 @@ fi
 %post
 %{__perl} %{_datadir}/cone/cone.sysconftool %{_sysconfdir}/cone.dist > /dev/null
 
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
 %doc ABOUT-NLS ChangeLog README NEWS AUTHORS COPYING* cone/html
 %attr(644,root,root) %{_sysconfdir}/cone.dist
 %ghost %attr(0644,root,root) %{_sysconfdir}/cone
@@ -91,8 +86,6 @@ rm -rf %{buildroot}
 %{_mandir}/man1/*
 
 %files devel
-%defattr(-,root,root)
 %{_libdir}/*.a
-%{_libdir}/*.la
 %{_mandir}/man[35]/*
 %{_includedir}/libmail
