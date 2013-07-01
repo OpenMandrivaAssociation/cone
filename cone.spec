@@ -1,4 +1,4 @@
-Summary:	CONE mail reader
+Summary:	Mail reader
 Name:		cone
 Version:	0.90
 Release:	%mkrel 1
