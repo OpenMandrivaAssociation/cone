@@ -1,7 +1,7 @@
 Summary:	Mail reader
 Name:		cone
 Version:	0.90
-Release:	%mkrel 1
+Release:	2
 License:	GPLv2
 Group:		Networking/Mail
 URL:		http://www.courier-mta.org/cone
@@ -46,7 +46,6 @@ library for mail clients.
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 %{__install} sysconftool %{buildroot}%{_datadir}/cone/cone.sysconftool
 touch %{buildroot}%{_sysconfdir}/cone
