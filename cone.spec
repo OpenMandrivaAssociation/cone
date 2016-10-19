@@ -1,7 +1,7 @@
 Summary:	Mail reader
 Name:		cone
 Version:	0.90
-Release:	4
+Release:	5
 License:	GPLv2+
 Group:		Networking/Mail
 Url:		http://www.courier-mta.org/cone
@@ -27,7 +27,7 @@ CONE is a simple, text-based E-mail reader and writer.
 %attr(0755,root,root) %{_bindir}/cone
 %attr(0755,root,root) %{_bindir}/leaf
 %attr(0755,root,root) %{_bindir}/mailtool
-%attr(0755,root,root) %{_libdir}/cone
+%attr(0755,root,root) %{_libexecdir}/cone
 %{_datadir}/cone
 %{_mandir}/man1/*
 
@@ -66,6 +66,9 @@ library for mail clients.
 %setup -q
 
 %build
+export CC=gcc
+export CXX=g++
+
 %configure2_5x \
 	--enable-shared \
 	--enable-static \
