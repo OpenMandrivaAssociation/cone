@@ -4,7 +4,7 @@ Version:	0.90
 Release:	5
 License:	GPLv2+
 Group:		Networking/Mail
-Url:		http://www.courier-mta.org/cone
+Url:		https://www.courier-mta.org/cone
 Source0:	http://prdownloads.sourceforge.net/courier/%{name}-%{version}.tar.bz2
 Source1:	http://prdownloads.sourceforge.net/courier/%{name}-%{version}.tar.bz2.sig
 BuildRequires:	autoconf2.5
