@@ -7,6 +7,10 @@ Group:		Networking/Mail
 Url:		https://www.courier-mta.org/cone
 Source0:	http://prdownloads.sourceforge.net/courier/%{name}-%{version}.tar.bz2
 Source1:	http://prdownloads.sourceforge.net/courier/%{name}-%{version}.tar.bz2.sig
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	autoconf2.5
 BuildRequires:	aspell-devel
 BuildRequires:	libstdc++-devel
